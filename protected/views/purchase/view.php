@@ -18,11 +18,19 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'purchase_id',
-		'applicant_id',
-		'proposer_id',
-		'create_on',
-		'approver_id',
+		array(
+                    'name'=>'applicant_id',
+                    'value'=>$model->applicant->title,
+                ),
+                array(
+                    'name'=>'proposer_id',
+                    'value'=>$model->proposer->name,
+                ),
+                'create_on',
+                array(
+                    'name'=>'approver_id',
+                    'value'=>$model->approver->name,
+                ),
 		'section',
 		'category',
 		'model',
@@ -32,8 +40,14 @@ $this->menu=array(
 		'arrival_of_goods',
 		'supplier',
 		'project',
-		'operator_id',
-		'storage_id',
+                array(
+                    'name'=>'operator_id',
+                    'value'=>$model->operator->name,
+                ),
+                array(
+                    'name'=>'storage_id',
+                    'value'=>$model->storage->name,
+                ),
 		'payment_status',
 		'invoice_status',
 		'remarks',
