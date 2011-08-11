@@ -11,25 +11,35 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'applicant_id'); ?>
-		<?php echo $form->textField($model,'applicant_id'); ?>
+                <?php echo $form->dropDownList($model,'applicant_id', CHtml::listData(Applicant::model()->findAll(), 'applicant_id', 'title'), array('empty'=>'Select Applicant'));?>
 		<?php echo $form->error($model,'applicant_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'proposer_id'); ?>
-		<?php echo $form->textField($model,'proposer_id'); ?>
+                <?php echo $form->dropDownList($model,'proposer_id', CHtml::listData(People::model()->findAll(), 'people_id', 'name'), array('empty'=>'Select Proposer'));?>
 		<?php echo $form->error($model,'proposer_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'create_on'); ?>
-		<?php echo $form->textField($model,'create_on'); ?>
+                <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(    
+                        'attribute'=>'create_on',
+                        'model'=>$model, 
+                        'options'=>array(
+                           'showAnim'=>'clip',
+                           'dateFormat'=>'yy-mm-dd',
+                         ),
+                        'htmlOptions'=>array(
+                           'class'=>'inputBox',
+                         ),
+                ));?>
 		<?php echo $form->error($model,'create_on'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'approver_id'); ?>
-		<?php echo $form->textField($model,'approver_id'); ?>
+                <?php echo $form->dropDownList($model,'approver_id', CHtml::listData(People::model()->findAll(), 'people_id', 'name'), array('empty'=>'Select Approver'));?>
 		<?php echo $form->error($model,'approver_id'); ?>
 	</div>
 
@@ -71,7 +81,17 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'arrival_of_goods'); ?>
-		<?php echo $form->textField($model,'arrival_of_goods'); ?>
+                <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(    
+                        'attribute'=>'arrival_of_goods',
+                        'model'=>$model, 
+                        'options'=>array(
+                           'showAnim'=>'clip',
+                           'dateFormat'=>'yy-mm-dd',
+                         ),
+                        'htmlOptions'=>array(
+                           'class'=>'inputBox',
+                         ),
+                ));?>
 		<?php echo $form->error($model,'arrival_of_goods'); ?>
 	</div>
 
@@ -89,13 +109,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'operator_id'); ?>
-		<?php echo $form->textField($model,'operator_id'); ?>
+                <?php echo $form->dropDownList($model,'operator_id', CHtml::listData(People::model()->findAll(), 'people_id', 'name'), array('empty'=>'Select Operator'));?>
 		<?php echo $form->error($model,'operator_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'storage_id'); ?>
-		<?php echo $form->textField($model,'storage_id'); ?>
+                <?php echo $form->dropDownList($model,'storage_id', CHtml::listData(People::model()->findAll(), 'people_id', 'name'), array('empty'=>'Select Storage'));?>
 		<?php echo $form->error($model,'storage_id'); ?>
 	</div>
 
