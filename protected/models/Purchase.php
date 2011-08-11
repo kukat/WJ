@@ -67,6 +67,11 @@ class Purchase extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'applicant'=>array(self::HAS_ONE, 'Applicant', 'applicant_id'),
+                    'proposer'=>array(self::BELONGS_TO, 'People', 'proposer_id'),
+                    'approver'=>array(self::BELONGS_TO, 'People', 'approver_id'),
+                    'operator'=>array(self::BELONGS_TO, 'People', 'operator_id'),
+                    'storage'=>array(self::BELONGS_TO, 'People', 'storage_id'),
 		);
 	}
 

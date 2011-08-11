@@ -42,13 +42,23 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'purchase_id',
-		'applicant_id',
-		'proposer_id',
-		'create_on',
-		'approver_id',
+                array(
+                    'name'=>'applicant_id',
+                    'value'=>'$data->applicant->title',
+                    'filter' => CHtml::listData(Applicant::model()->findAll(), 'applicant_id', 'title'),
+                ),
+                array(
+                    'name'=>'proposer_id',
+                    'value'=>'$data->proposer->name',
+                    'filter' => CHtml::listData(People::model()->findAll(), 'people_id', 'name'),
+                ),
+                'create_on',
+                array(
+                    'name'=>'approver_id',
+                    'value'=>'$data->approver->name',
+                    'filter' => CHtml::listData(People::model()->findAll(), 'people_id', 'name'),
+                ),
 		'section',
-		/*
 		'category',
 		'model',
 		'unit_price',
@@ -57,12 +67,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'arrival_of_goods',
 		'supplier',
 		'project',
-		'operator_id',
-		'storage_id',
+                array(
+                    'name'=>'operator_id',
+                    'value'=>'$data->operator->name',
+                    'filter' => CHtml::listData(People::model()->findAll(), 'people_id', 'name'),
+                ),
+                array(
+                    'name'=>'storage_id',
+                    'value'=>'$data->storage->name',
+                    'filter' => CHtml::listData(People::model()->findAll(), 'people_id', 'name'),
+                ),
 		'payment_status',
 		'invoice_status',
 		'remarks',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),
